@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Kandidat - PT Padepokan Tujuh Sembilan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- SISTEM PROTEKSI KEAMANAN (MENCEGAH AKSES TANPA LOGIN/VERIFIKASI) -->
+    <script>
+        const isVerified = localStorage.getItem("p79_candidate_status");
+        if (isVerified !== "passed") {
+            alert("Akses ditolak! Anda harus menyelesaikan tahap verifikasi atau login terlebih dahulu.");
+            window.location.href = "login.html"; // Ubah ke halaman login/reference check kamu jika namanya berbeda
+        }
+    </script>
+
+    <style>
+        :root {
+            --p79-navy: #0b1d3a;
+            --p79-blue: #0098db;
+            --p79-blue-dark: #0077b6;
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 24px 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* HEADER NAVBAR */
+        header {
+            background: #ffffff;
+            padding: 16px 30px;
+            border-radius: var(--radius-md);
+            box-shadow: 0 4px 20px rgba(11, 29, 58, 0.05);
+            margin-bottom: 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 4px solid var(--p79-blue);
+        }
+
+        .brand-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .brand-title h1 {
+            font-size: 15px;
+            color: var(--p79-navy);
+            font-weight: 800;
+        }
+
+        .brand-title p {
+            font-size: 11px;
+            color: var(--p79-blue);
+            font-weight: 600;
+        }
+
+        /* SECTION TITLE */
+        .service-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .service-subtitle {
+            font-size: 12px;
+            font-weight: 800;
+            color: var(--p79-blue);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .service-header h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--p79-navy);
+            margin-bottom: 10px;
+        }
+
+        .service-header p {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        /* 3 CARDS LAYOUT */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .portal-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .portal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        }
+
+        .card-image-box {
+            padding: 25px 20px 10px;
+            text-align: center;
+            min-height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-local-img {
+            width: 100%;
+            max-width: 170px;
+            height: 140px;
+            object-fit: contain;
+            animation: floatPhoto 4s ease-in-out infinite;
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.2));
+        }
+
+        @keyframes floatPhoto {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .card-content {
+            background: #ffffff;
+            padding: 30px 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--p79-navy);
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .card-content p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .card-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 13.5px;
+            color: white;
+            transition: opacity 0.2s;
+        }
+
+        .portal-card.card-red .card-btn { background: #e63946; }
+        .portal-card.card-blue .card-btn { background: #0098db; }
+        .portal-card.card-yellow .card-btn { background: #fb8500; }
+
+        .portal-card.card-red { background: linear-gradient(135deg, #e63946 0%, #d90429 100%); }
+        .portal-card.card-blue { background: linear-gradient(135deg, #0098db 0%, #0077b6 100%); }
+        .portal-card.card-yellow { background: linear-gradient(135deg, #ffb703 0%, #fb8500 100%); }
+
+        .card-btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #e2e8f0;
+            color: var(--text-main);
+            border-radius: 20px;
+            font-size: 12.5px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-small:hover {
+            background: #cbd5e1;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- NAVBAR -->
+    <header>
+        <div class="brand-box">
+            <img src="logo.png" alt="Logo PT Padepokan Tujuh Sembilan" class="brand-logo" onerror="this.src='logo.jpg'">
+            <div class="brand-title">
+                <h1>PT PADEPOKAN TUJUH SEMBILAN</h1>
+                <p>Always Improving You</p>
+            </div>
+        </div>
+        <!-- Tombol Keluar untuk membersihkan session/status login -->
+        <a href="login.html" class="btn-small" onclick="localStorage.removeItem('p79_candidate_status');">
+            <i class="fas fa-sign-out-alt"></i> Keluar
+        </a>
+    </header>
+
+    <!-- SECTION TITLE -->
+    <div class="service-header">
+        <span class="service-subtitle">Portal Seleksi Kandidat</span>
+        <h2>Tahapan Rekrutmen Anda</h2>
+        <p>Silakan selesaikan tahapan di bawah ini secara berurutan sesuai instruksi.</p>
+    </div>
+
+    <!-- 3 KARTU UTAMA -->
+    <div class="cards-grid">
+        
+        <!-- KOTAK 1: MERAH (Form Pendaftaran) -->
+        <a href="https://bit.ly/FormRecruitment_P79" target="_blank" class="portal-card card-red">
+            <div class="card-image-box">
+                <img src="foto-pendaftaran.png" alt="Formulir Pendaftaran" class="card-local-img" onerror="this.src='foto-pendaftaran.jpg'">
+            </div>
+            <div class="card-content">
+                <div>
+                    <h3>Formulir Pendaftaran</h3>
+                    <p>Lengkapi data diri, latar belakang pendidikan, dan informasi profesional Anda di sini.</p>
+                </div>
+                <span class="card-btn">Isi Formulir Sekarang →</span>
+            </div>
+        </a>
+
+        <!-- KOTAK 2: BIRU (Jadwal Interview) -->
+        <a href="https://bit.ly/InterviewHRP79" target="_blank" class="portal-card card-blue">
+            <div class="card-image-box">
+                <img src="foto-jadwal.png" alt="Jadwal Interview" class="card-local-img" onerror="this.src='foto-jadwal.jpg'">
+            </div>
+            <div class="card-content">
+                <div>
+                    <h3>Jadwal Interview HR</h3>
+                    <p>Tentukan jadwal sesi interview HR pilihan Anda dan dapatkan konfirmasi via email.</p>
+                </div>
+                <span class="card-btn">Pilih Jadwal Interview →</span>
+            </div>
+        </a>
+
+        <!-- KOTAK 3: KUNING (Psikotes & Asesmen) -->
+        <a href="psikotes.html" class="portal-card card-yellow">
+            <div class="card-image-box">
+                <img src="foto-psikotest.png" alt="Psikotes & Asesmen" class="card-local-img" onerror="this.src='foto-psikotest.jpg'">
+            </div>
+            <div class="card-content">
+                <div>
+                    <h3>Psikotes & Asesmen</h3>
+                    <p>Ikuti rangkaian tes online (Aptitude, PAPI Kostick, DISC) serta upload lembar Riwayat Hidup.</p>
+                </div>
+                <span class="card-btn">Buka Menu Psikotes →</span>
+            </div>
+        </a>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 PT Padepokan Tujuh Sembilan. All rights reserved.</p>
+    </footer>
+
+</div>
+
+</body>
+</html>
